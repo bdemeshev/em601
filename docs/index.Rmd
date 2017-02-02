@@ -6,6 +6,10 @@
 
 ###  Материалы 2016-2017
 
+* [Семинар 1](https://github.com/bdemeshev/em601/raw/master/2016/sem_01.R). Введение в R. Множественная регрессия.
+* [Семинар 2](https://github.com/bdemeshev/em601/raw/master/2016/sem_hetero.R). Гетероскедастичность, робастные стандартные ошибки.
+* [Семинар 3](https://github.com/bdemeshev/em601/raw/master/2016/sem_hetero2.R). Гетероскедастичность, тесты. LASSO.
+
 
 
 
@@ -26,7 +30,7 @@
 
 ###  Материалы 2014-2015
 
-* [Экзамен](https://github.com/bdemeshev/em601/blob/master/2014/binst_exam/binst_metrics_14.pdf)
+* [Экзамен](https://github.com/bdemeshev/em601/raw/master/2014/binst_exam/binst_metrics_14.pdf)
 * [Домашка rlms](https://github.com/bdemeshev/em601/raw/master/2014/binst_ht_rlms/binst_ht_rlms.pdf)
 * [Семинар 4](https://github.com/bdemeshev/em601/raw/master/2014/binst_sem_04.R)
 * [Семинар 3](https://github.com/bdemeshev/em601/raw/master/2014/binst_sem_03.R)
