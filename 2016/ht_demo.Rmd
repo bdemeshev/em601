@@ -1,0 +1,33 @@
+---
+title: "Untitled"
+author: "Винни-Пух"
+date: "2/2/2017"
+output: html_document
+---
+
+Привет, дорогой читатель! Порадую я тебя парой регрессий!
+
+```{r setup, include=FALSE}
+library(tidyverse) # манипуляции с данными + графики
+library(lmtest) # тесты для линейных моделей (на ГСК и пр)
+library(sandwich) # для робастных к ГСК оценок дисперсиии
+library(psych) # описательные статистики
+```
+
+Прочитаю бесценный набор данных
+```{r}
+library(readr)
+flats <- read_delim("~/Downloads/flats_moscow.txt", 
+                    "\t", escape_double = FALSE, col_types = cols(kitsp = col_double()), 
+                    trim_ws = TRUE)
+
+```
+
+Построю пару прекрасных графиков
+```{r}
+flats2 <- mutate(flats, 
+                 othersp = totsp - kitsp - livesp)
+qplot(data = flats2, x = totsp, y = price)
+qplot(data = flats2, x = log(totsp), y = log(price))
+```
+

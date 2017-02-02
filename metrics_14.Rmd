@@ -18,7 +18,7 @@ header-includes:
 library("lmtest")
 library("Ecdat")
 library("dplyr")
-library("erer")
+library("ggplot2")
 ```
 
 Активируйте встроенный набор данных по расходам домохозяйств `BudgetFood` и очистите его от пропущенных значений:

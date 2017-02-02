@@ -1,0 +1,34 @@
+---
+title: "Исследование о покемонах"
+author: "Винни-Пух"
+date: "12/2/2016"
+output:
+  word_document: default
+  html_document: default
+lang: ru-RU
+---
+
+Вступление. Покемоны бывают разные.
+
+По последним сведениям два в пятой 
+равно `r 2^5`: привет, Таня!
+
+```{r, message=FALSE, echo=TRUE}
+library("tidyverse")
+library("psych")
+Pokemon <- read_csv("~/Downloads/Pokemon.csv")
+qplot(data = Pokemon, x = Attack, y = Defense,
+  col = Generation) + xlab("Атака") +
+  ylab("Защита")
+```
+
+
+
+
+
+
+
+
+
+
+
