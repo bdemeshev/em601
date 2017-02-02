@@ -1,0 +1,43 @@
+### Ссылки
+
+* Семинары бакалаврского курс вшэ по эконометрике, [em301](http://bdemeshev.github.io/em301/)
+* [Цикл заметок по R](http://bdemeshev.github.io/r_cycle/)
+* [github-репозиторий](https://github.com/bdemeshev/em601) курса — свалка всех файлов :)
+
+###  Материалы 2016-2017
+
+
+
+
+###  Материалы 2015-2016
+
+* [Экзамен](https://github.com/bdemeshev/em601/raw/master/2015/exam/binst_metrics_15.pdf)
+
+* [Семинар 7](https://github.com/bdemeshev/em601/raw/master/2015/sem_07_panel.R): панельные данные
+
+* [Семинар 6](https://github.com/bdemeshev/em601/raw/master/2015/sem_06x_iv.R): инструментальные переменные
+
+* [Семинар 5](https://github.com/bdemeshev/em601/raw/master/2015/sem_06_hetero.R): гетероскедастичность
+
+* [Семинар 4](https://github.com/bdemeshev/em601/raw/master/2015/sem_04_chow_test.R): дамми-переменные, тест Чоу
+* [Семинар 3](https://github.com/bdemeshev/em601/raw/master/2015/sem_03.R): интервалы для прогнозов и сравнение вложенных моделей
+* [Семинар 2](https://github.com/bdemeshev/em601/raw/master/2015/sem_02.R): проверка гипотез об отдельных коэффициентах 
+* [Семинар 1](https://github.com/bdemeshev/em601/raw/master/2015/sem_01.R): введение в R
+
+###  Материалы 2014-2015
+
+* [Экзамен](https://github.com/bdemeshev/em601/blob/master/2014/binst_exam/binst_metrics_14.pdf)
+* [Домашка rlms](https://github.com/bdemeshev/em601/raw/master/2014/binst_ht_rlms/binst_ht_rlms.pdf)
+* [Семинар 4](https://github.com/bdemeshev/em601/raw/master/2014/binst_sem_04.R)
+* [Семинар 3](https://github.com/bdemeshev/em601/raw/master/2014/binst_sem_03.R)
+* [Семинар 2](https://github.com/bdemeshev/em601/raw/master/2014/binst_sem_02.R)
+* [Семинар 1](https://github.com/bdemeshev/em601/raw/master/2014/binst_sem_01/binst_sem_01.R)
+
+###  Материалы 2013-2014
+
+* [Экзамен](https://github.com/bdemeshev/em601/raw/master/2013/binst_metrix_exam_14/binst_metr_exam_14.pdf)
+* [Семинар по гетероскедастичности](https://github.com/bdemeshev/em601/raw/master/2013/binst_hetero.R)
+* [Семинар по ML](https://github.com/bdemeshev/em601/raw/master/2013/binst_ml_one.R)
+* [Семинра по панельным данным](https://github.com/bdemeshev/em601/raw/master/2013/binst_panel.R)
+* [Семинар по логит](https://github.com/bdemeshev/em601/raw/master/2013/binst_logit.R)
+

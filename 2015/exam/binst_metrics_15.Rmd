@@ -1,5 +1,5 @@
 ---
-title: "Метрика. Пересдача"
+title: "Метрика"
 output: pdf_document
 lang: ru-RU
 header-includes: 
