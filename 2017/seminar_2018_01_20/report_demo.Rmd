@@ -5,6 +5,8 @@ output:
   html_document: default
   word_document: default
 lang: en-GB
+editor_options: 
+  chunk_output_type: console
 ---
 
 Let's start our small research!
@@ -14,9 +16,11 @@ Let's start our small research!
 First, we attach some packages:
 
 ```{r, message=FALSE, echo=FALSE}
-library(tidyverse)
-library(rio)
-library(texreg)
+library(tidyverse) # working with data
+library(rio) # import / export
+library(texreg) # table for many regressions
+library(lmtest) # tests in linear models
+library(car) # companion for applied regression
 ```
 
 Then we load the data:
@@ -59,6 +63,138 @@ Now the same results in a pretty table
 ```{r, results="asis"}
 htmlreg(list(model_a, model_b, model_c))
 ```
+
+# Model comparison
+
+I am happy and I would like to compare model A and model C:
+
+```{r}
+waldtest(model_a, model_c)
+```
+
+As p-value is less than $\alpha=0.05$, short model (model a) is rejected.
+
+## Is the pricing of brick and non-brick flats similar?
+
+```{r}
+reg_whole <- lm(data = flats, 
+     price ~ totsp + livesp + kitsp)
+```
+
+summary for regression
+```{r}
+summary(reg_whole)
+```
+
+
+Extract Residual Sum of Squares
+```{r}
+deviance(reg_whole)
+```
+
+Look inside complex object with all results:
+```{r}
+summ_whole <- summary(reg_whole)
+r2_whole <- summ_whole[["r.squared"]]
+```
+
+For the model on the whole dataset the $R^2$ is equal to `r r2_whole` and RSS is equal to `r deviance(reg_whole)`.
+
+Now we filter data frame:
+```{r}
+flats_brick <- filter(flats, brick == 1)
+flats_non_brick <- filter(flats, brick == 0)
+```
+
+Two regressions on subsets:
+```{r}
+reg_brick <- lm(data = flats_brick, 
+     price ~ totsp + livesp + kitsp)
+reg_non_brick <- lm(data = flats_non_brick, 
+     price ~ totsp + livesp + kitsp)
+```
+
+Put all results into one table
+```{r, results="asis"}
+htmlreg(list(reg_whole, reg_brick, reg_non_brick))
+```
+
+Manually to F-test
+```{r}
+RSS_R <- deviance(reg_whole)
+RSS_UR <- deviance(reg_brick) + deviance(reg_non_brick)
+n <- nrow(flats)
+F_obs <- (RSS_R - RSS_UR) / 4 / (RSS_UR / (n - 8))
+F_crit <- qf(0.95, df1 = 4, df2 = n - 8)
+```
+
+In our test the observed value of F-statistic is `r F_obs`, while the critical value is `r F_crit`. So the null hyphotesis of the same model for each subset is rejected. 
+
+
+Another way! We may estimate one unrestricted model on the whole dataset instead of two models on subsets.
+
+```{r}
+reg_unrestricted <- lm(data = flats, 
+                price ~  brick * (1 + totsp + livesp + kitsp))
+summary(reg_unrestricted)
+```
+
+Second way of doing F-test:
+```{r}
+waldtest(reg_whole, reg_unrestricted)
+```
+
+The p-value is too small, so the null-hypothesis of same model for both subsets is rejected. Models for brick and non-brick flats are different.
+
+
+# Dummy variables for encoding of cathegorical variables
+
+Wrong method!!!
+```{r}
+model_wrong <- lm(data = flats, 
+                  price ~ totsp + livesp + kitsp + code)
+summary(model_wrong)
+```
+
+Good method!!!
+```{r}
+flats2 <- mutate(flats, code = factor(code))
+glimpse(flats2)
+model_good <- lm(data = flats2, 
+                  price ~ totsp + livesp + kitsp + code)
+summary(model_good)
+```
+
+Test hypothesis that zone 3 is similar to zone 8.
+```{r}
+flats2 <- mutate(flats2, 
+                 code_alt = ifelse(code == "8", "3", code))
+glimpse(flats2)
+model_rest <- lm(data = flats2, 
+                  price ~ totsp + livesp + kitsp + code_alt)
+RSS_R <- deviance(model_rest)
+RSS_UR <- deviance(model_good)
+F_obs <- (RSS_R - RSS_UR) / 1 / (RSS_UR / (n - 11))
+F_obs
+F_crit <- qf(0.95, df1 = 1, df2 = n - 11)
+F_crit
+```
+
+
+Test hypothesis that zone 3 is similar to zone 8.
+```{r}
+linearHypothesis(model_good, "code3 = code8")
+```
+
+Test hypothesis that zone 3 is similar to zone 8 and zone 1 simultaneously.
+```{r}
+linearHypothesis(model_good, c("code3 = code8", "code3 = 0"))
+```
+
+
+
+
+
 
 
 
