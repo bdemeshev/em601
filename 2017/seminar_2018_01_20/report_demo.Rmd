@@ -1,0 +1,66 @@
+---
+title: "Super document"
+author: "Winnie the Pooh"
+output:
+  html_document: default
+  word_document: default
+lang: en-GB
+---
+
+Let's start our small research!
+
+# Load the data
+
+First, we attach some packages:
+
+```{r, message=FALSE, echo=FALSE}
+library(tidyverse)
+library(rio)
+library(texreg)
+```
+
+Then we load the data:
+```{r, echo=FALSE}
+flats <- import("~/Downloads/flats_moscow.txt")
+```
+
+First plot
+
+```{r, echo=FALSE}
+qplot(data = flats, x = totsp, y = price) +
+  xlab("Total span, square meters") +
+  ylab("Price, thouthands of dollars") +
+  ggtitle("Flat prices in Moscow, 2007")
+```
+
+Our dataset contains `r nrow(flats)` observations.
+
+According to latest scientific discoveries logarithm of two is equal to `r log(2)`.
+
+Let's estimate some models:
+```{r}
+model_a <- lm(data = flats, price ~ totsp)
+model_b <- lm(data = flats, 
+    price ~ totsp + livesp + kitsp)
+model_c <- lm(data = flats, 
+    price ~ totsp + livesp + kitsp + brick)
+```
+
+
+just the result
+```{r, eval=FALSE}
+summary(model_a)
+summary(model_b)
+summary(model_c)
+```
+
+Now the same results in a pretty table
+
+```{r, results="asis"}
+htmlreg(list(model_a, model_b, model_c))
+```
+
+
+
+
+
