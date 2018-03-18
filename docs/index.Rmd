@@ -4,13 +4,26 @@
 * [Цикл заметок по R](http://bdemeshev.github.io/r_cycle/)
 * [github-репозиторий](https://github.com/bdemeshev/em601) курса — свалка всех файлов :)
 
+###  Materials 2016-2017
+
+* [Script from 2017-11-22](https://github.com/bdemeshev/em601/raw/master/2017/seminar_2017_11_22.R)
+* [Script from 2017-12-06](https://github.com/bdemeshev/em601/raw/master/2017/seminar_2017_12_06.R)
+* [Script from 2018-01-10](https://github.com/bdemeshev/em601/raw/master/2017/seminar_2018_01_10.R)
+* [Script from 2017-01-20](https://github.com/bdemeshev/em601/raw/master/2017/seminar_2018_01_20/report_demo.Rmd)
+* [Script from 2018-02-16](https://github.com/bdemeshev/em601/raw/master/2017/seminar_2018_02_16.R)
+* [Script from 2018-03-03](https://github.com/bdemeshev/em601/raw/master/2017/seminar_2018_03_03.R)
+* [Script from 2018-03-14](https://github.com/bdemeshev/em601/raw/master/2017/seminar_2018_03_14.R)
+
+
+
+
 ###  Материалы 2016-2017
 
 * [Семинар 1](https://github.com/bdemeshev/em601/raw/master/2016/sem_01.R). Введение в R. Множественная регрессия.
 * [Семинар 2](https://github.com/bdemeshev/em601/raw/master/2016/sem_hetero.R). Гетероскедастичность, робастные стандартные ошибки.
 * [Семинар 3](https://github.com/bdemeshev/em601/raw/master/2016/sem_hetero2.R). Гетероскедастичность, тесты. LASSO.
 
-
+* [Экзамен](https://github.com/bdemeshev/em601/raw/master/2016/exam/binst_metrics_16.pdf)
 
 
 ###  Материалы 2015-2016
