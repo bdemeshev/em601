@@ -4,7 +4,9 @@
 * [Цикл заметок по R](http://bdemeshev.github.io/r_cycle/)
 * [github-репозиторий](https://github.com/bdemeshev/em601) курса — свалка всех файлов :)
 
-###  Materials 2016-2017
+###  Materials 2017-2018
+
+#### R-scripts
 
 * [Script from 2017-11-22](https://github.com/bdemeshev/em601/raw/master/2017/seminar_2017_11_22.R)
 * [Script from 2017-12-06](https://github.com/bdemeshev/em601/raw/master/2017/seminar_2017_12_06.R)
@@ -14,7 +16,7 @@
 * [Script from 2018-03-03](https://github.com/bdemeshev/em601/raw/master/2017/seminar_2018_03_03.R)
 * [Script from 2018-03-14](https://github.com/bdemeshev/em601/raw/master/2017/seminar_2018_03_14.R)
 
-
+#### [Final exam](https://github.com/bdemeshev/em601/raw/master/2017/final_2017_18/final_2017_18.pdf)
 
 
 ###  Материалы 2016-2017
@@ -38,7 +40,7 @@
 
 * [Семинар 4](https://github.com/bdemeshev/em601/raw/master/2015/sem_04_chow_test.R): дамми-переменные, тест Чоу
 * [Семинар 3](https://github.com/bdemeshev/em601/raw/master/2015/sem_03.R): интервалы для прогнозов и сравнение вложенных моделей
-* [Семинар 2](https://github.com/bdemeshev/em601/raw/master/2015/sem_02.R): проверка гипотез об отдельных коэффициентах 
+* [Семинар 2](https://github.com/bdemeshev/em601/raw/master/2015/sem_02.R): проверка гипотез об отдельных коэффициентах
 * [Семинар 1](https://github.com/bdemeshev/em601/raw/master/2015/sem_01.R): введение в R
 
 ###  Материалы 2014-2015
@@ -57,4 +59,3 @@
 * [Семинар по ML](https://github.com/bdemeshev/em601/raw/master/2013/binst_ml_one.R)
 * [Семинра по панельным данным](https://github.com/bdemeshev/em601/raw/master/2013/binst_panel.R)
 * [Семинар по логит](https://github.com/bdemeshev/em601/raw/master/2013/binst_logit.R)
-
