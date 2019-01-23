@@ -1,0 +1,122 @@
+---
+title: "Привет"
+author: "Winnie the Pooh"
+date: "1/23/2019"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+Let's attach some packages!
+```{r}
+library(rio) # imports data from various formats
+library(tidyverse) # data manipulations and plots
+library(lmtest) # test for linear models
+library(skimr) # summary statistics
+```
+
+Load the dataset
+```{r}
+flats = import("~/Downloads/flats_moscow.txt")
+```
+
+If you don't remember even approximate location 
+you may just run command `file.choose()` in console.
+
+Look at the dataset
+```{r}
+glimpse(flats) # general info about dataset (n obs, n variables...)
+skim(flats) # descriptive stats
+head(flats) # beginning
+tail(flats) # end of the dataset
+```
+
+
+Some quick plots!
+```{r}
+qplot(data = flats, x = log(price)) + 
+  labs(xlab = "Log price 1000$",
+  ylab = "Number of flats",
+  title = "Price distribution")
+```
+
+Joint plot
+```{r}
+qplot(data = flats, 
+      x = log(totsp), y = log(price)) + 
+  labs(xlab = "Total span, square meters",
+  ylab = "Price of flat in 1000$",
+  title = "Moscow flats prices in 2009")
+```
+
+First model. Price depends on room area.
+```{r}
+model_a = lm(data = flats, price ~ totsp + livesp + kitsp)
+summary(model_a)
+```
+
+Important: 1.29 1000$ is the price of balcony, bathroom etc
+
+Let's introduce new variable `othersp`
+```{r}
+flats = mutate(flats, othersp = totsp - kitsp - livesp)
+model_b = lm(data = flats, price ~ livesp + kitsp + othersp)
+summary(model_b)
+```
+
+Calculate confidence intervals
+```{r}
+confint(model_b, level = 0.95)
+```
+
+Let's estimate more complex model
+```{r}
+model_c = lm(data = flats, 
+    price ~ totsp + livesp + kitsp + brick + floor + walk)
+summary(model_c)
+```
+
+Let's look at $RSS = \sum (y_i - \hat y_i)^2$:
+```{r}
+RSS_a = deviance(model_a) # RSS
+RSS_c = deviance(model_c) # RSS
+RSS_a
+RSS_c
+```
+
+Let's add some junk variables:
+```{r}
+flats3 = mutate(flats, noise1 = rnorm(2040), 
+                noise2 = rnorm(2040))
+head(flats3)
+model_d = lm(data = flats3, 
+    price ~ totsp + livesp + kitsp + 
+      brick + floor + walk + noise1 + noise2)
+summary(model_d)
+deviance(model_d)
+```
+
+Let's compare two models with F-test
+```{r}
+waldtest(model_c, model_d)
+```
+
+Let's find F critical :)
+```{r}
+F_crit = qf(0.95, df1 = 2, df2 = 2040 - 9)
+F_crit
+```
+
+F observed (0.612) is less than F critical (3.00), so H_0 is not rejected.
+
+Or:
+
+P-value (0.5424) is bigger than significance level (alpha = 0.05), so H_0 is not rejected.
+
+Let's compare model A and model C.
+```{r}
+waldtest(model_a, model_c)
+```
+
+
+
