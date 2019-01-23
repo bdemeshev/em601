@@ -2,7 +2,14 @@
 
 * Семинары бакалаврского курс вшэ по эконометрике, [em301](http://bdemeshev.github.io/em301/)
 * [Цикл заметок по R](http://bdemeshev.github.io/r_cycle/)
-* [github-репозиторий](https://github.com/bdemeshev/em601) курса — свалка всех файлов :)
+* [github-репозиторий](https://github.com/bdemeshev/em601) all files are available here even if there are no links below :)
+
+
+###  Materials 2018-2019
+
+* [Seminar 1. Probabilities for normal distribution, CI for mean](https://github.com/bdemeshev/em601/raw/master/2018/script_01_normal_sim_mean_ci.R )
+* [Seminar 2. R + markdown report.](https://github.com/bdemeshev/em601/raw/master/2018/report.Rmd)
+* [Seminar 3. R + markdown report. Flats dataset.](https://github.com/bdemeshev/em601/raw/master/2018/report_2.Rmd)
 
 ###  Materials 2017-2018
 
