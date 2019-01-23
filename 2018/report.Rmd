@@ -1,0 +1,94 @@
+---
+title: "Безумно важное исследование"
+author: "Winnie the Pooh"
+date: "19 декабря 2018"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+# Обзор литературы / Literature review
+
+Ещё питекантропы говорили о важности эконометрики
+Long time ago...
+```{r, message=FALSE, echo=TRUE}
+library(tidyverse) # data manipulations
+library(lmtest) # model tests
+library(texreg) # tables for model comparison
+```
+
+Вставка блока кода через Code — Insert chunk
+Insert code chunk using Code — Insert chunk
+
+График набора данных про бриллианты в студию!
+Scatterplot of dataset!
+```{r}
+qplot(data = diamonds, x = carat, y = price)
+```
+
+# Основная часть (main part)
+
+Начало нашего набора данных
+Top rows of `diamonds` dataset
+```{r}
+head(diamonds)
+```
+
+А не оценить ли благородному дону пару регрессий?
+Estimate two models. Dependent variable is to the left of tilde and predictors — to the right of tilde.
+```{r}
+model_a = lm(data = diamonds, price ~ carat)
+model_b = lm(data = diamonds, price ~ carat + x + y + z)
+summary(model_b)
+```
+
+Сравним рядом две модели в одной табличке
+Compare two models in one table
+```{r, results='asis'}
+htmlreg(list(model_a, model_b))
+# screenreg(list(model_a, model_b))
+```
+
+Сравним с помощью F-теста две вложенных модели
+Compare two nested models using F-test:
+```{r}
+waldtest(model_a, model_b)
+```
+
+Построим доверительный интервал для коэффициентов:
+We calculate confidence interval for true coefficients:
+```{r}
+confint(model_b, level = 0.95)
+```
+
+```{r}
+library(Ecdat) # a lot of data sets for studies :)
+library(skimr) # descriptive statistics
+```
+
+* Look at the documentation for `Icecream` dataset.
+Just `?...`
+* Calculate descriptive stats for `Icecream` dataset. 
+Hint: use `skim(...)` funciton :) 
+* Plot `temp` (temperature) against `cons` (icecream consumtion).
+* Estimate regression of `cons` (consumption of icecream)
+on `income`, `price` and `temp` (temperature). This is Model A. 
+* Calculate 90% confidence interval for each coefficient
+* Compare Model A with simplier Model B: 
+`cons` consumption depends only on `temp` temperature.
+Do F-test and a table for two models. Which one is better?
+
+# Load your own dataset :)
+
+```{r}
+library(rio)
+mydata = import("~/Downloads/demo.xlsx")
+mydata
+skim(mydata) # descriptive statistics
+```
+
+If you don't know where the file is :)
+In console run the command `file.choose()`
+
+
+
