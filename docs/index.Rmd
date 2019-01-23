@@ -5,7 +5,13 @@
 * [github-репозиторий](https://github.com/bdemeshev/em601) all files are available here even if there are no links below :)
 
 
+
+
+
 ###  Materials 2018-2019
+
+A. Install R + Rstudio. [Installation instructions](https://bdemeshev.github.io/installation/r/R_installation.html).
+
 
 * [Seminar 1. Probabilities for normal distribution, CI for mean](https://github.com/bdemeshev/em601/raw/master/2018/script_01_normal_sim_mean_ci.R )
 * [Seminar 2. R + markdown report.](https://github.com/bdemeshev/em601/raw/master/2018/report.Rmd)
