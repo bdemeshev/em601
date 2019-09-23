@@ -1,0 +1,224 @@
+\documentclass[12pt]{article}
+
+\usepackage{tikz} % картинки в tikz
+\usepackage{microtype} % свешивание пунктуации
+
+\usepackage{array} % для столбцов фиксированной ширины
+
+\usepackage{indentfirst} % отступ в первом параграфе
+
+\usepackage{sectsty} % для центрирования названий частей
+\allsectionsfont{\centering}
+
+\usepackage{amsmath, amssymb} % куча стандартных математических плюшек
+
+
+\usepackage{comment}
+
+\usepackage[top=2cm, left=1.2cm, right=1.2cm, bottom=2cm]{geometry} % размер текста на странице
+
+\usepackage{lastpage} % чтобы узнать номер последней страницы
+
+\usepackage{enumitem} % дополнительные плюшки для списков
+%  например \begin{enumerate}[resume] позволяет продолжить нумерацию в новом списке
+\usepackage{caption}
+
+
+\usepackage{fancyhdr} % весёлые колонтитулы
+\pagestyle{fancy}
+\lhead{Econometrics}
+\chead{}
+\rhead{2019-03-27, final exam}
+\lfoot{}
+\cfoot{}
+\rfoot{\thepage/\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\let\P\relax
+\DeclareMathOperator{\P}{\mathbb{P}}
+
+\usepackage{todonotes} % для вставки в документ заметок о том, что осталось сделать
+% \todo{Здесь надо коэффициенты исправить}
+% \missingfigure{Здесь будет Последний день Помпеи}
+% \listoftodos --- печатает все поставленные \todo'шки
+
+
+% более красивые таблицы
+\usepackage{booktabs}
+% заповеди из докупентации:
+% 1. Не используйте вертикальные линни
+% 2. Не используйте двойные линии
+% 3. Единицы измерения - в шапку таблицы
+% 4. Не сокращайте .1 вместо 0.1
+% 5. Повторяющееся значение повторяйте, а не говорите "то же"
+
+
+
+\usepackage{fontspec}
+\usepackage{polyglossia}
+
+\setmainlanguage{russian}
+\setotherlanguages{english}
+
+% download "Linux Libertine" fonts:
+% http://www.linuxlibertine.org/index.php?id=91&L=1
+\setmainfont{Linux Libertine O} % or Helvetica, Arial, Cambria
+% why do we need \newfontfamily:
+% http://tex.stackexchange.com/questions/91507/
+\newfontfamily{\cyrillicfonttt}{Linux Libertine O}
+
+\AddEnumerateCounter{\asbuk}{\russian@alph}{щ} % для списков с русскими буквами
+%\setlist[enumerate, 2]{label=\asbuk*),ref=\asbuk*}
+
+%% эконометрические сокращения
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\Corr}{Corr}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\E}{E}
+\def \hb{\hat{\beta}}
+\def \hs{\hat{\sigma}}
+\def \htheta{\hat{\theta}}
+\def \s{\sigma}
+\def \hy{\hat{y}}
+\def \hY{\hat{Y}}
+\def \v1{\vec{1}}
+\def \e{\varepsilon}
+\def \he{\hat{\e}}
+\def \z{z}
+\def \hVar{\widehat{\Var}}
+\def \hCorr{\widehat{\Corr}}
+\def \hCov{\widehat{\Cov}}
+\def \cN{\mathcal{N}}
+
+
+\begin{document}
+
+\begin{enumerate}
+
+	\item James Bond estimates the model $y_i = \beta x_i + u_i$ with OLS.
+	We know that $u_i$ are normal, $\cN(0; \sigma^2)$ and independent.
+	We also know that $x_1 = 1$ and $x_i = 2$ for $i\geq 2$.
+	    \begin{enumerate}
+      \item Find expected value and variance of $\hat \beta$.
+      \item Is $\hat \beta$ efficient amond all linear unbiased estimators? Why or why not?
+			\item Calculate probability limit of $\hat \beta$. Is $\hat \beta$ consistent?
+    \end{enumerate}
+
+  \item James Bond uses robust to heteroskedasticity White standard errors
+	in the case of homoskedastic model $y_i = \beta x_i + u_i$, where
+	$u_i \sim \cN(0; \sigma^2)$ and $u_i$ are independent.
+	We also know that $x_1 = 1$ and $x_i = 2$ for $i\geq 2$.
+ \begin{enumerate}
+	 \item Calculate $se_{HC}(\hat\beta)$;
+ 	  \item Will $\hat \beta$ remain unbiased, efficient among all linear unbiased estimators? Why or why not?
+		\item Is it correct to test significance of coefficients using $t$-distribution? How many degrees of freedom for $t$ distribution should James use? If it is not correct then what should James do?
+ \end{enumerate}
+
+ \item James Bond assumes that observations $y_i$ are independent and probability distribution for $y_i$ is given by the table
+
+	 \begin{tabular}{cccc}
+		 \toprule
+		 $y_i$ & $y_i = 1$ & $y_i = 2$ & $y_i = 3$ \\
+		 \midrule
+		 probability & $2a$ & $3a$ & $1 - 5a$ \\
+		 \bottomrule
+	 \end{tabular}
+
+	 James Bond has collected 400 observations: $100$ observations are equal to $1$, $100$ observations equal to $2$, and $200$ observations equal to $3$.
+
+\begin{enumerate}
+ \item Estimate unknown $a$ using maximum likelihood;
+ \item Construct 95\% confidence interval for $a$.
+\end{enumerate}
+
+
+\item Using 400 observation James Bond estimated the logistic regression for probability
+of passing econometrics exam. Predictors are: $x_i$ — number of study hours and $d_i$ —
+dummy variable for having at least one dinner in nearby Khatchapuri restaurant:
+\[
+\hat \P(\text{pass}) = \Lambda(0.15 + 0.03x_i - 0.2 d_i),
+\]
+
+The estimate of coefficient covariance matrix is:
+\[
+\begin{pmatrix}
+0.0004 & -0.0001 & 0 \\
+-0.0001 & 0.0001 & 0 \\
+0 & 0 & 0.0009 \\
+\end{pmatrix}
+\]
+
+\begin{enumerate}
+  \item Test whether the number of study hours influences the probability of passing the exam.
+  \item Construct 95\% confidence interval for the difference of probabilities of passing the exam
+	for two students. We know that both students have studied 20 hours, but only one of the students
+	had a dinner in Khatchapuri restaurant.
+  \item For which value of $d_i$ the marginal effect of increasing $x_i$ is bigger for $x_i = 20$?
+\end{enumerate}
+
+\item James Bond would like to check whether the econometrics final exam score, $y_i$, varies for
+students that had at least one dinner at Khatchapuri and those who had not. Once again
+$x_i$ is the number of study hours.
+
+He estimates the same model three datasets:
+
+
+\begin{tabular}{cccc}
+	\toprule
+	dataset & equation & $RSS$ & observations \\
+	all students & $\hat y_i = 40 + 2x_i$ & 7000 & 400 \\
+	at least one Khatchapuri dinner & $\hat y_i = 50 + 3x_i$ & 3000 & 200 \\
+	no Khatchapuri dinner & $\hat y_i = 37 + 1.8x_i$ & 2000 & 200 \\
+	\bottomrule
+\end{tabular}
+
+\begin{enumerate}
+	\item Assume $d_i$ is those who have visited Khatchapuri at least once.
+	What estimates will John obtain in the regression
+	\[
+    \hat y_i = \hat \beta_1 + \hat \beta_2 x_i + \hat \beta_3 d_i + \hat\beta_4 d_i x_i
+	\]
+	\item Using appropriate test check the econometrics final exam score varies for two type of students.
+\end{enumerate}
+
+
+$F_{a,b}$ distribution 5\% critical values are given below:
+
+\begin{tabular}{cccc}
+	\toprule
+	& $b=100$ & $b=200$ & $b=500$  \\
+	\midrule
+	$a=1$ & $3.94$ & $3.89$ & $3.86$  \\
+	$a=2$ & $3.09$ & $3.04$ & $3.01$ \\
+	$a=3$ & $2.70$ & $2.65$ & $2.62$ \\
+	$a=200$ & $1.34$ & $1.26$ & $1.21$ \\
+	\bottomrule
+\end{tabular}
+
+
+\item The last problem :)
+
+James Bond would like to estimate the model $y_i = \beta_1 + \beta_2 x_i + u_i$,
+where $y_i$ — is the econometrics final exam result, $x_i$ is the number of study hours.
+
+The problem is that James has only data on self-reported $x^*_i = x_i \cdot f_i$ where
+$f_i$ is the famous Russian exageration factor. We know that $x_i \sim \cN(20;9)$,
+$u_i \sim \cN(0;1)$, $f_i \sim \cN(2;4)$. Variables $(x_i)$, $(u_i)$ and $(f_i)$
+are independent.
+
+James Bond uses the OLS regression $\hat y_i = \hat \beta_1 + \hat\beta_2 x_i^*$.
+
+\begin{enumerate}
+	\item Find probability limit of $\hat\beta_2$. Is $\hat \beta_2$ consistent?
+	\item Briefly describe the possible way to obtain consistent estimator.
+\end{enumerate}
+
+
+
+
+
+\end{enumerate}
+
+\end{document}
