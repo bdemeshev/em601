@@ -4,22 +4,16 @@
 * [Цикл заметок по R](http://bdemeshev.github.io/r_cycle/)
 * [github-репозиторий](https://github.com/bdemeshev/em601) all files are available here even if there are no links below :)
 
-
-
-
-
 ###  Materials 2018-2019
 
 A. Install R + Rstudio. [Installation instructions](https://bdemeshev.github.io/installation/r/R_installation.html).
 
-
 * [Seminar 1. Probabilities for normal distribution, CI for mean](https://github.com/bdemeshev/em601/raw/master/2018/script_01_normal_sim_mean_ci.R )
 * [Seminar 2. R + markdown report.](https://github.com/bdemeshev/em601/raw/master/2018/report.Rmd)
 * [Seminar 3. R + markdown report. Flats dataset.](https://github.com/bdemeshev/em601/raw/master/2018/report_2.Rmd)
+* [Final exam](https://github.com/bdemeshev/em601/raw/master/2018/final_2018_19/final_2018_19.pdf)
 
 ###  Materials 2017-2018
-
-#### R-scripts
 
 * [Script from 2017-11-22](https://github.com/bdemeshev/em601/raw/master/2017/seminar_2017_11_22.R)
 * [Script from 2017-12-06](https://github.com/bdemeshev/em601/raw/master/2017/seminar_2017_12_06.R)
@@ -29,7 +23,7 @@ A. Install R + Rstudio. [Installation instructions](https://bdemeshev.github.io/
 * [Script from 2018-03-03](https://github.com/bdemeshev/em601/raw/master/2017/seminar_2018_03_03.R)
 * [Script from 2018-03-14](https://github.com/bdemeshev/em601/raw/master/2017/seminar_2018_03_14.R)
 
-#### [Final exam](https://github.com/bdemeshev/em601/raw/master/2017/final_2017_18/final_2017_18.pdf)
+* [Final exam](https://github.com/bdemeshev/em601/raw/master/2017/final_2017_18/final_2017_18.pdf)
 
 
 ###  Материалы 2016-2017
