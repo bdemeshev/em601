@@ -1,0 +1,241 @@
+\documentclass[12pt]{article}
+
+\usepackage{tikz} % картинки в tikz
+\usepackage{microtype} % свешивание пунктуации
+
+\usepackage{array} % для столбцов фиксированной ширины
+
+\usepackage{indentfirst} % отступ в первом параграфе
+
+\usepackage{sectsty} % для центрирования названий частей
+\allsectionsfont{\centering}
+
+\usepackage{amsmath, amssymb} % куча стандартных математических плюшек
+
+
+\usepackage{comment}
+
+\usepackage[top=2cm, left=1.2cm, right=1.2cm, bottom=2cm]{geometry} % размер текста на странице
+
+\usepackage{lastpage} % чтобы узнать номер последней страницы
+
+\usepackage{enumitem} % дополнительные плюшки для списков
+%  например \begin{enumerate}[resume] позволяет продолжить нумерацию в новом списке
+\usepackage{caption}
+
+
+\usepackage{fancyhdr} % весёлые колонтитулы
+\pagestyle{fancy}
+\lhead{Econometrics}
+\chead{}
+\rhead{2020-06-25, final exam}
+\lfoot{}
+\cfoot{}
+\rfoot{\thepage/\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\let\P\relax
+\DeclareMathOperator{\P}{\mathbb{P}}
+
+\usepackage{todonotes} % для вставки в документ заметок о том, что осталось сделать
+% \todo{Здесь надо коэффициенты исправить}
+% \missingfigure{Здесь будет Последний день Помпеи}
+% \listoftodos --- печатает все поставленные \todo'шки
+
+
+% более красивые таблицы
+\usepackage{booktabs}
+% заповеди из докупентации:
+% 1. Не используйте вертикальные линни
+% 2. Не используйте двойные линии
+% 3. Единицы измерения - в шапку таблицы
+% 4. Не сокращайте .1 вместо 0.1
+% 5. Повторяющееся значение повторяйте, а не говорите "то же"
+
+
+
+\usepackage{fontspec}
+\usepackage{polyglossia}
+
+\setmainlanguage{russian}
+\setotherlanguages{english}
+
+% download "Linux Libertine" fonts:
+% http://www.linuxlibertine.org/index.php?id=91&L=1
+\setmainfont{Linux Libertine O} % or Helvetica, Arial, Cambria
+% why do we need \newfontfamily:
+% http://tex.stackexchange.com/questions/91507/
+\newfontfamily{\cyrillicfonttt}{Linux Libertine O}
+
+\AddEnumerateCounter{\asbuk}{\russian@alph}{щ} % для списков с русскими буквами
+%\setlist[enumerate, 2]{label=\asbuk*),ref=\asbuk*}
+
+%% эконометрические сокращения
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\Corr}{Corr}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\E}{E}
+\def \hb{\hat{\beta}}
+\def \hs{\hat{\sigma}}
+\def \htheta{\hat{\theta}}
+\def \s{\sigma}
+\def \hy{\hat{y}}
+\def \hY{\hat{Y}}
+\def \v1{\vec{1}}
+\def \e{\varepsilon}
+\def \he{\hat{\e}}
+\def \z{z}
+\def \hVar{\widehat{\Var}}
+\def \hCorr{\widehat{\Corr}}
+\def \hCov{\widehat{\Cov}}
+\def \cN{\mathcal{N}}
+
+
+\begin{document}
+
+\section*{Promo-code activation :)}
+
+You have two options! 
+
+You can try to solve all the proposed problems and submit your solutions as a pdf file.
+In this case I will honestly grade them.
+
+You can write a promo-code \#beta\_hot. 
+In this case I will ignore your solutions and grade your exam as 4/10. 
+
+\section*{Problems}
+
+\begin{enumerate}
+
+	\item James Bond estimates the model $y_t = \beta x_t + u_i$ with OLS.
+	We know that $u_t$ are independent and identically distributed with unknown heteroskedasticity structure.
+	We also know that $x_t = 1$ for odd $t$ and $x_t = 2$ for even $t$.
+	The total number of observations $n$ is 600. 
+  
+	\begin{tabular}{ccc}
+	  \toprule
+		 & all odd $t$ & all even $t$ \\
+	  \midrule
+	  $\sum y_t$ & 300 & 200  \\
+	  $\sum \hat u_t^2$ & 1000 & 800 \\
+	  \bottomrule
+  \end{tabular}
+  
+  
+   \begin{enumerate}
+	  \item Find $\hat\beta_{ols}$
+	   \item Calculate ordinary and robust standard errors, $se(\hat\beta_{ols})$ and $se_{HC}(\hat\beta_{ols})$;
+	   \item Construct 95\% ordinary and robust confidence intervals for $\beta$. 
+   \end{enumerate}
+  
+
+
+	\item James Bond estimates the model $y_t = \beta x_t + u_i$ with OLS.
+	We know that $u_t$ are normal $\cN(0; x_t \cdot \sigma^2)$ and independent.
+	We also know that $x_t = 1$ for odd $t$ and $x_t = 2$ for even $t$.
+	The total number of observations $n$ is even. 
+	    \begin{enumerate}
+      \item Find expected value and variance of $\hat \beta_{ols}$.
+      \item Construct the most efficient unbiased linear estimator $\hat\beta_{best}$ and find its variance.
+ 	  \item Calculate probability limit of $\hat \beta_{ols}$. Is $\hat \beta_{ols}$ consistent?
+    \end{enumerate}
+
+ \item James Bond assumes that observations $y_i$ are independent and probability distribution for $y_i$ is given by the table
+
+	 \begin{tabular}{cccc}
+		 \toprule
+		 $y_i$ & $y_i = 1$ & $y_i = 2$ & $y_i = 3$ \\
+		 \midrule
+		 probability & $a$ & $b$ & $1 - a-b$ \\
+		 \bottomrule
+	 \end{tabular}
+
+	 James Bond has collected 400 observations: $120$ observations are equal to $1$, $80$ observations equal to $2$, and $200$ observations equal to $3$.
+
+\begin{enumerate}
+ \item Estimate unknown $a$ and $b$ using maximum likelihood;
+ \item Construct 95\% confidence interval for $a$ and 95\% confidence interval for $a+b$.
+ \item Using likelihood ratio statistic test the hypothesis $a=b$. You may assume that the critical value
+ of the statistic is $4$ but you should clearly state the degrees of freedom. 
+\end{enumerate}
+
+\newpage
+\item Using 400 observation James Bond estimated the logistic regression for probability
+of passing econometrics exam using $x_i$ — number of study hours as predictor:
+\[
+\hat \P(\text{pass}) = \Lambda(0.15 - 0.025 x_i^2 +  0.9x_i),
+\]
+
+The estimate of coefficient covariance matrix is:
+\[
+\begin{pmatrix}
+0.0004 & -0.0001 & 0 \\
+-0.0001 & 0.0001 & 0 \\
+0 & 0 & 0.0009 \\
+\end{pmatrix}
+\]
+
+\begin{enumerate}
+  \item Estimate the number of study hours that maximizes the probability of passing the exams.
+  What is the maximal probability of passing the exam?
+  \item Construct approximate 95\% confidence interval for the number of study hours that maximizes the probability of passing the exams.
+  Hint: use Taylor expansion to obtain a linear function of $\hat\beta$.
+\end{enumerate}
+
+\item James Bond would like to check whether the econometrics final exam score, $y_i$, varies for
+students that dinner at Khatchapuri. Once again $x_i$ is the number of study hours.
+
+He estimates the same model using four datasets:
+
+\begin{tabular}{cccc}
+	\toprule
+	dataset & equation & $RSS$ & observations \\
+	\midrule
+	all students & $\hat y_i = 40 + 2x_i$ & 14000 & 600 \\
+	two or more Khatchapuri dinners & $\hat y_i = 60 + 4x_i$ & 4000 & 200 \\
+	exactly one Khatchapuri dinner & $\hat y_i = 50 + 3x_i$ & 3000 & 200 \\
+	no Khatchapuri dinner & $\hat y_i = 37 + 1.8x_i$ & 2000 & 200 \\
+	\bottomrule
+\end{tabular}
+
+\begin{enumerate}
+	\item Using appropriate test check whether the econometrics final exam score varies for three type of students.
+	\item Which unique equation should James Bond estimate to obtain all given beta estimates at once?
+\end{enumerate}
+
+
+You may assume that $F_{critical}$ for $\alpha=0.05$ is approximately equal to $2.4$.
+However you should clearly state the degrees of freedom.
+
+\item The last problem :)
+
+James Bond would like to estimate the model $y_i =  \beta x_i + u_i$,
+where $y_i$ — is the econometrics final exam centered result, $x_i$ is the centered number of study hours.
+
+
+The problem is that James has only data on self-reported $x^*_i = x_i \cdot f_i$ where
+$f_i$ is the famous Russian exageration factor. We know that $x_i \sim \cN(0;9)$,
+$u_i \sim \cN(0;\sigma^2)$, $f_i$ is uniform on $[0;4]$. 
+
+James Bond also has estimates of the famous Russian exageration factor, $f^*_i$ for each student.
+Here $f^*_i = f_i + \nu_i$ where $\nu_i \sim \cN(\delta, \sigma^2_{\nu})$. 
+The parameters $\delta$ and $\sigma^2_{\nu}$ are unknown.
+
+Variables $(x_i)$, $(u_i)$, $(\nu_i)$ and $(f_i)$ are independent. The dataset is a random sample. 
+
+
+
+\begin{enumerate}
+	\item Find the probability limit of $\hat\beta$ in the regression $\hat y_i = \hat\beta \cdot x^*_i$.
+	\item Provide explicit formulas or algorithms for consistent estimators of all parameters: $\nu$, $\sigma^2_{\nu}$, $\beta$, $\sigma^2$.
+\end{enumerate}
+
+
+
+
+
+\end{enumerate}
+
+\end{document}
